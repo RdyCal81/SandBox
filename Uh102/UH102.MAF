@@ -1,0 +1,15 @@
+
+
+t	=UH102
+a	=MPASMWIN /q- $(@B)
+
+PATH	=\MPLAB
+
+all:	$t.ver $t.hex
+
+$t.ver		: *.asm *.inc
+	\Tools\version $(@B).VER
+
+$t.hex		: *.asm *.h *.inc
+	$a
+

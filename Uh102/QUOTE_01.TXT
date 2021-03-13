@@ -1,0 +1,52 @@
+
+
+  To     : Aaron Chan
+  From   : Randy A. Callaway
+  Ref.   : Quote for Project UH102
+  Date   : November 12, 1997
+
+	This is a Quote for software development of the Project UH102.
+	Because of the limited time I have to complete this project I will
+	be working on it every night from now until completion,	November 20th.
+	Due to the amount of time I will be spending on	the project I have
+	risen the per hour rate from $55 to $65.  I hope this is acceptable
+	in return for the quick development time.  When	you recieve this Quote
+	I will also give Aaron the I/O port assignments	that we have agreed on.
+	I will need these I/O assignments to remain the unchanged in order to
+	meet the deadline.  I will be at UTI on Friday November 14th, the
+	entire day to develope and test software, and Saturday if the need
+	exists.  At some point before that I will need to discuss
+	what the LCD screens are going to look like.  I will need feedback
+	on the Software before November 14th in order to fix any bugs
+	found.  During the week of November 17th to November 21st I will most
+	likely be traveling to UTI often to do final bug fixes and any other
+	modifications needed.
+	
+	I cannot stress enough the need for UTI to keep me informed as quickly
+	as possible anything that needs to be added or modified on this
+	project.  It will not take much of a delay to miss the November 21st
+	deadline.
+	
+	I have broken down the tasks and hours into catagories as follows :
+
+	 1 : KeyBoard, 5 screens at .5hrs		  2.5 hrs
+	 2 : LCD, 5 screens at 3hrs			 15.0 hrs
+	 3 : Running Operations, 6 at 4hrs		 24.0 hrs
+	 4 : Math routines				  6.0 hrs
+	 5 : HardWare to develope and test		 10.0 hrs
+	 6 : Driving to/from Moorpark, meetings		 20.0 hrs
+
+						total : 77.5 hrs
+						@ $65 = $5,037.50
+		Total quote : $5,000
+
+
+	Assuming my progress is acceptable with the delivery of the first
+	software, I would like 50% payment on Thursday November 20th, with
+	the remainder on Friday November 28th.  As always, any problems
+	found after full payment has been recieved will be fixed.
+
+			Thank You,
+			
+				Randy A. Callaway
+

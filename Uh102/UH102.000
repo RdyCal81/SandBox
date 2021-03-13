@@ -1,0 +1,187 @@
+;Codewright Project File (do not remove or modify this line)
+[ProjInit]
+ConfigSetExtMode=2
+ProjSetConfigFlags=0x04110950
+
+[State]
+SysSetCwd='C:\SandBox\Ultron\Src\Uh102'
+SrchSetFlags=0x041028ba
+SrchSetAgainFlags=0x04012094,0
+SrchSetAgainFlags=0x06100003,1
+FileSortMode=0x0
+_StateView='C:\SandBox\Ultron\Src\Uh102\UH102.INC',22,22,875,182,-1,-1,46,8,6,1,1,'',0x00000018,0,80,0,0,''
+_StateBuffer='C:\Ultron\Src\Uh102\UH102.ASM',0x0c00048e,181,86,25,'9','',0x2,'',1,72,0,0
+_StateBuffer='C:\Ultron\Src\Uh115\uh115.INC',0x0400048a,18,4,25,'5 9','',0x0,'',1,72,0,0
+_StateBuffer='C:\SandBox\Ultron\Src\Uh102\SWITCHES.ASM',0x0400048e,4,5,25,'9','',0x2,'',1,72,0,0
+_StateBuffer='C:\SandBox\Ultron\Src\Uh102\CLOCK.ASM',0x0400048e,542,14,25,'9','',0x2,'',1,72,0,0
+_StateBuffer='C:\SandBox\Ultron\Src\Uh102\MOTORS.ASM',0x0c00048e,108,37,25,'9','',0x2,'',1,72,0,0
+_StateBuffer='C:\SandBox\Ultron\Src\Uh102\EXT_INT.ASM',0x0400048e,23,19,25,'9','',0x2,'',1,72,0,0
+_StateBuffer='C:\SandBox\Ultron\Src\Uh102\UH102.ASM',0x0400048e,250,23,25,'9','',0x2,'',1,72,0,0
+_StateBuffer='C:\SandBox\Ultron\Src\Uh102\TIME.ASM',0x0400048e,171,9,25,'9','',0x2,'',1,72,0,0
+_StateBuffer='C:\SandBox\Ultron\Src\Uh102\RAM.ASM',0x0c00048e,18,61,25,'9','',0x2,'',1,72,0,0
+_StateBuffer='C:\SandBox\Ultron\Src\Uh102\UH102.INC',0x0400048a,46,8,25,'5 9','',0x0,'',1,72,0,0
+_StateBuffer='C:\SandBox\Ultron\Src\Uh102\BOOT.ASM',0x0000048e,1,1,25,'9','',0x2,'',1,72,0,0
+_StateBuffer='C:\SandBox\Ultron\Src\Uh102\PORTS.ASM',0x0400048e,59,31,25,'9','',0x2,'',1,72,0,0
+_StateBuffer='C:\SandBox\Ultron\Src\Uh115\uh115.INC',0x0400048a,47,5,25,'5 9','',0x0,'',1,72,0,0
+_StateBuffer='C:\SandBox\Ultron\Src\Uh115\PORTS.ASM',0x0400048e,109,12,25,'9','',0x2,'',1,72,0,0
+_StateBuffer='C:\SandBox\Ultron\Src\Uh102\MACROS.ASM',0x0c00048e,47,83,25,'9','',0x2,'',1,72,0,0
+_StateBuffer='C:\SandBox\Ultron\Src\Uh102\K.Bat',0x0400048a,3,1,25,'5 9','',0x0,'',1,72,0,0
+_StateBuffer='C:\SandBox\Ultron\Src\Uh102\LCD.ASM',0x0400048e,73,29,25,'9','',0x2,'',1,72,0,0
+_StateHistory=FILELIST,'C:\SandBox\Ultron\Src\Uh102\CLOCK.ASM','C:\SandBox\Ultron\Src\Uh102\EXT_INT.ASM','C:\SandBox\Ultron\Src\Uh102\Uh102.LST','C:\SandBox\Ultron\Src\Uh102\BOOT.ASM','C:\SandBox\Ultron\Src\Uh102\TIME.ASM','C:\SandBox\Ultron\Src\Uh102\RAM.ASM','C:\SandBox\Ultron\Src\Uh102\UH102.INC','C:\SandBox\Ultron\Src\Uh102\UH102.VER'
+_StateHistory=SEARCH,'if','WarmUp','TestDoorLatch','FLAGS','DOOR_IN_ADD','uv','MSD','FLAGSPLUS','QUO_H','DSP_H','DSP_L','TIME_FLAGS','StayIfDoorOpen','ReMain','Main1','DoStart','GOT_SHUTTER','Error','DOOR_CHECK','ver'
+_StateHistory=XMACRO,'run'
+_StateHistory=EDITFILE,'C:\SandBox\Ultron\Src\Uh102\UH102.VER','C:\SandBox\Ultron\Src\Uh102\K.Bat'
+_StateHistory=DIRECTORY,'D:\Ultron\U_Src\Uh102','D:\Ultron\U_Src\Uh102-a','I:\Ultron\Src\Uh102','C:\Ultron\Src\Uh115','C:\SandBox\Ultron\Src\Uh115'
+_StateHistory=DIFFFILE,'C:\Ultron\Src\I-April2003\Uh102\UH102.HEX','C:\SandBox\Ultron\Src\Uh102\Uh102.HEX','C:\Ultron\Src\Uh102\UH102.INC','C:\Ultron\Src\Uh102\Uh102.HEX'
+_StateHistory=DIFFTARGET,'C:\SandBox\Ultron\Src\Uh102253.Hex','C:\SandBox\Ultron\Src\UH102.HEX','C:\SandBox\Ultron\Src\Uh102\UH102.INC','C:\SandBox\Ultron\Src\Uh102\Uh102.HEX'
+_StateHistory=DOCUMENTVISIT,'250         23          C:\SandBox\Ultron\Src\Uh102\UH102.ASM','48          22          C:\SandBox\Ultron\Src\Uh102\MACROS.ASM','974         1           C:\SandBox\Ultron\Src\Uh102\Uh102.LST','47          83          C:\SandBox\Ultron\Src\Uh102\MACROS.ASM','1           1           C:\SandBox\Ultron\Src\Uh102\UH102.VER','974         1           C:\SandBox\Ultron\Src\Uh102\Uh102.LST','16          64          C:\SandBox\Ultron\Src\Uh102\UH102.VER','974         1           C:\SandBox\Ultron\Src\Uh102\Uh102.LST','16          64          C:\SandBox\Ultron\Src\Uh102\UH102.VER','3           1           C:\SandBox\Ultron\Src\Uh102\K.Bat'
+_StateHistory=DIFFDIRREFERENCE,'D:\Ultron\U_Src\Uh102','I:\Ultron\Src\Uh102'
+_StateHistory=DIFFDIRTARGET,'D:\Ultron\U_Src\Uh102-a','D:\Ultron\Src\Uh102'
+_StateHistory=DIFFDIRSCOPE,''
+_StateDocumentVisit=10
+_StateMark=MARK_POSITION,1,'C:\Ultron\Src\Uh102\UH102.ASM',64,28,0,'',0
+_StateMark=MARK_POSITION,2,'C:\Ultron\Src\Uh102\UH102.ASM',178,29,0,'',0
+_StateMark=MARK_POSITION,1,'C:\Ultron\Src\Uh115\uh115.INC',18,4,0,'',0
+_StateMark=MARK_POSITION,1,'C:\SandBox\Ultron\Src\Uh102\SWITCHES.ASM',10,3,0,'',0
+_StateMark=MARK_POSITION,2,'C:\SandBox\Ultron\Src\Uh102\SWITCHES.ASM',19,20,0,'',0
+_StateMark=MARK_POSITION,3,'C:\SandBox\Ultron\Src\Uh102\SWITCHES.ASM',4,5,0,'',0
+_StateMark=MARK_POSITION,4,'C:\SandBox\Ultron\Src\Uh102\SWITCHES.ASM',4,5,0,'',0
+_StateMark=MARK_POSITION,1,'C:\SandBox\Ultron\Src\Uh102\MOTORS.ASM',10,6,0,'',0
+_StateMark=MARK_POSITION,2,'C:\SandBox\Ultron\Src\Uh102\MOTORS.ASM',10,1,0,'',0
+_StateMark=MARK_POSITION,3,'C:\SandBox\Ultron\Src\Uh102\MOTORS.ASM',26,1,0,'',0
+_StateMark=MARK_POSITION,4,'C:\SandBox\Ultron\Src\Uh102\MOTORS.ASM',11,7,0,'',0
+_StateMark=MARK_POSITION,5,'C:\SandBox\Ultron\Src\Uh102\MOTORS.ASM',37,9,0,'',0
+_StateMark=MARK_POSITION,6,'C:\SandBox\Ultron\Src\Uh102\MOTORS.ASM',11,30,0,'',0
+_StateMark=MARK_POSITION,1,'C:\SandBox\Ultron\Src\Uh102\UH102.ASM',38,28,0,'',0
+_StateMark=MARK_POSITION,2,'C:\SandBox\Ultron\Src\Uh102\UH102.ASM',358,2,0,'',0
+_StateMark=MARK_POSITION,3,'C:\SandBox\Ultron\Src\Uh102\UH102.ASM',70,26,0,'',0
+_StateMark=MARK_POSITION,4,'C:\SandBox\Ultron\Src\Uh102\UH102.ASM',187,29,0,'',0
+_StateMark=MARK_POSITION,5,'C:\SandBox\Ultron\Src\Uh102\UH102.ASM',216,31,0,'',0
+_StateMark=MARK_POSITION,6,'C:\SandBox\Ultron\Src\Uh102\UH102.ASM',70,28,0,'',0
+_StateMark=MARK_POSITION,7,'C:\SandBox\Ultron\Src\Uh102\UH102.ASM',188,31,0,'',0
+_StateMark=MARK_POSITION,8,'C:\SandBox\Ultron\Src\Uh102\UH102.ASM',253,28,0,'',0
+_StateMark=MARK_POSITION,9,'C:\SandBox\Ultron\Src\Uh102\UH102.ASM',92,27,0,'',0
+_StateMark=MARK_POSITION,10,'C:\SandBox\Ultron\Src\Uh102\UH102.ASM',246,13,0,'',0
+_StateMark=MARK_POSITION,11,'C:\SandBox\Ultron\Src\Uh102\UH102.ASM',250,23,0,'',0
+_StateMark=MARK_POSITION,1,'C:\SandBox\Ultron\Src\Uh102\TIME.ASM',20,32,0,'',0
+_StateMark=MARK_POSITION,2,'C:\SandBox\Ultron\Src\Uh102\TIME.ASM',44,31,0,'',0
+_StateMark=MARK_POSITION,3,'C:\SandBox\Ultron\Src\Uh102\TIME.ASM',185,1,0,'',0
+_StateMark=MARK_POSITION,4,'C:\SandBox\Ultron\Src\Uh102\TIME.ASM',185,1,0,'',0
+_StateMark=MARK_POSITION,5,'C:\SandBox\Ultron\Src\Uh102\TIME.ASM',132,26,0,'',0
+_StateMark=MARK_POSITION,6,'C:\SandBox\Ultron\Src\Uh102\TIME.ASM',162,32,0,'',0
+_StateMark=MARK_POSITION,7,'C:\SandBox\Ultron\Src\Uh102\TIME.ASM',171,9,0,'',0
+_StateMark=MARK_POSITION,1,'C:\SandBox\Ultron\Src\Uh102\RAM.ASM',45,3,0,'',0
+_StateMark=MARK_POSITION,2,'C:\SandBox\Ultron\Src\Uh102\RAM.ASM',45,3,0,'',0
+_StateMark=MARK_POSITION,3,'C:\SandBox\Ultron\Src\Uh102\RAM.ASM',47,12,0,'',0
+_StateMark=MARK_POSITION,4,'C:\SandBox\Ultron\Src\Uh102\RAM.ASM',47,28,0,'',0
+_StateMark=MARK_POSITION,5,'C:\SandBox\Ultron\Src\Uh102\RAM.ASM',60,5,0,'',0
+_StateMark=MARK_POSITION,6,'C:\SandBox\Ultron\Src\Uh102\RAM.ASM',29,2,0,'',0
+_StateMark=MARK_POSITION,7,'C:\SandBox\Ultron\Src\Uh102\RAM.ASM',36,3,0,'',0
+_StateMark=MARK_POSITION,8,'C:\SandBox\Ultron\Src\Uh102\RAM.ASM',37,4,0,'',0
+_StateMark=MARK_POSITION,9,'C:\SandBox\Ultron\Src\Uh102\RAM.ASM',14,8,0,'',0
+_StateMark=MARK_POSITION,1,'C:\SandBox\Ultron\Src\Uh102\UH102.INC',46,8,0,'',0
+_StateMark=MARK_POSITION,1,'C:\SandBox\Ultron\Src\Uh115\uh115.INC',47,5,0,'',0
+_StateMark=MARK_POSITION,1,'C:\SandBox\Ultron\Src\Uh115\PORTS.ASM',109,12,0,'',0
+_StateMark=MARK_POSITION,1,'C:\SandBox\Ultron\Src\Uh102\MACROS.ASM',63,1,0,'',0
+_StateMark=MARK_POSITION,1,'C:\SandBox\Ultron\Src\Uh102\K.Bat',3,1,0,'',0
+
+[Editor]
+ConfigSetBtnIniFilename='C:\RPF\Starbase\CodeWright\CWRIGHT.BTN'
+ConfigSetMacroFilename='C:\RPF\Starbase\CodeWright\CWRIGHT.MAC'
+ConfigSetMarkDBFilename='C:\RPF\Starbase\CodeWright\CWRIGHT.MRK'
+BufSetGlobalBackupSpec='%b.bak'
+KeyRepeat=5
+KeyDelay=450
+ExtCommentSearchLimit=200
+ExtDelayedColoring=1
+ExtSetUpdateDelay=0
+BookmarkAttr=0x0c33
+NameMarkFlags=0x0021
+NameMarkThreshold=5
+_RestoreSysFlags=0x434935fa, 0xfffffffc, 0
+_RestoreSysFlags=0x00002000, 0xffffffff, 1
+_RestoreSysFlags=0x00000001, 0xffffffff, 2
+CollapseMode=0x13080610
+FilterProjDeleteList 
+FilterProjAdd='\'F\' C Code','F*.C',-1
+FilterProjAdd='     C Code','*.C',-1
+FilterProjAdd='ASM Code','*.ASM',-1
+FilterProjAdd='SC C Code','*.SC',-1
+FilterProjAdd='The Rest','*.*',-1
+VCSProject=''
+VCSProjectPath=''
+VCSProjectLocalPath=''
+ScrapSetCount=1
+ClipboardSetCount=1
+ClipboardEnableSepStr=1
+ClipboardSetSepStr='\r\n',0
+ClipboardEnableTermStr=1
+ClipboardSetTermStr='\r\n',0
+
+[Tools]
+ToolDeleteList 
+ToolAddCmd='$_custom_tool_$_1','API Database Editor',1342177312,'cwtedit.exe'
+ToolAddCmd='$_custom_tool_$_2','Paint',1342177312,'pbrush.exe'
+ToolAddCmd='$_custom_tool_$_3','Absolute Make',1342177280,'%pHammer 2'
+ToolAddCmd='$_custom_tool_$_4','Absolute Link',1342177280,'%pHammer 1'
+ToolAddCmd='$_custom_tool_$_5','Zip',1342177280,'%xHammer 4'
+ToolAddCmd='$_custom_tool_$_6','Unzip',1342178304,'%pHammer 5'
+ToolAddCmd='$_custom_tool_$_7','Release xxx',1342178304,'%pHammer 7'
+
+[Compiler]
+TagSetCmd='${HOME}${WTAGS} -oc -d -t${TAGFILE}.tag -p${TAGFILE}.ptg',0x8000060
+BrowseSetFile='D:\CW32V6\tagfile.ptg'
+TagSetFile='D:\CW32V6\tagfile.tag'
+CompilerAddCmdEx='Microsoft Assembler','',1073741904,'',80,'',144,'',144,'',144,'',144,'',0,'',0,'','','','',''
+CompilerAddResponse='Microsoft Assembler',
+CompilerAddCmdEx='$_cw_proj_hash_$','',1073741824,'',0,'${FTEE} nmake',176,'${FTEE} nmake',176,'${FTEE} nmake',176,'${FTEE} nmake',176,'',0,'',0,'_ErrorInfoDefault','','','proj.err','%x'
+CompilerAddResponse='$_cw_proj_hash_$',
+CompilerAddCmdEx='Microsoft C(NT-i386)','${FTEE} cl -DSTRICT -c -W3 -G3 -D_X86_=1 -DWIN32 %r%e',1073741904,'${FTEE} cl -DSTRICT -c -W3 -G3 -D_X86_=1 -DWIN32 %r%e',80,'',144,'',144,'',144,'',144,'',0,'',0,'_MicrosoftErrorInfo','','','',''
+CompilerAddResponse='Microsoft C(NT-i386)',
+CompilerAddCmdEx='Z-World C Compliler','',1073741904,'',80,'',144,'',144,'',144,'',144,'',0,'',0,'','','','',''
+CompilerAddResponse='Z-World C Compliler',
+CompilerNewExt=.htm
+CompilerAssign='Z-World C Compliler','.c'
+CompilerAssign='Microsoft C(NT-i386)','.h'
+CompilerNewExt=.pas
+CompilerNewExt=.ini
+CompilerNewExt=.bat
+CompilerNewExt=.cs
+CompilerNewExt=.html
+CompilerAssign='Z-World C Compliler','.*'
+CompilerAssign='Microsoft C(NT-i386)','.cpp'
+CompilerAssign='Microsoft C(NT-i386)','.cxx'
+CompilerAssign='Microsoft C(NT-i386)','.hpp'
+CompilerAssign='Microsoft Assembler','.asm'
+CompilerNewExt=.txt
+CompilerNewExt=.java
+CompilerNewExt=.xml
+
+[VersionControl:TLIB]
+VCSSetCmd=VCS_CHECKIN_ID,'tlib U %b%e @%Q',0x8000040
+VCSSetCmd=VCS_CHECKINLOCK_ID,'tlib K %b%e @%Q',0x8000040
+VCSSetCmd=VCS_CHECKOUT_ID,'tlib B %b%e',0x8000040
+VCSSetCmd=VCS_CHECKOUTLOCK_ID,'tlib E %b%e',0x8000040
+VCSSetCmd=VCS_CHECKLOCK_ID,'tlib O %b%e',0x8000040
+VCSSetCmd=VCS_CHECKUNLOCK_ID,'tlib I %b%e',0x8000040
+VCSSetCmd=VCS_CHECKLABEL_ID,'tlibsnap A ${VCSLABEL} S %b%e',0x8000040
+VCSSetCmd=VCS_CHECKLOG_ID,'tlib L %b%e',0x8000040
+VCSSetCmd=VCS_CHECKPROP_ID,'tlib T %b%e',0x8000040
+VCSSetCmd=VCS_CHECKDIFF_ID,'cmpr %b%e',0x8000040
+VCSSetCmd=VCS_CHECKMENU_ID,'tlib ?',0x8000000
+VCSSetCmd=VCS_ADD_ID,'tlib N %b%e @%Q',0x8000040
+VCSSetCmd=VCS_REMOVE_ID,'del /f %b.tlb',0x8000040
+
+[Project]
+ConfigSetLinkDBFilename='C:\RPF\Starbase\CodeWright\CWRIGHT.LDB'
+ConfigSetMarkDBFilename='C:\RPF\Starbase\CodeWright\CWRIGHT.MRK'
+ConfigSetSymbolDBFilename='C:\SandBox\Ultron\Src\Uh102\Uh102.sbl'
+EditSetPath=''
+
+[Files]
+.\UH102.INC
+.\CONSTANT.ASM
+.\SWITCHES.ASM
+.\UH102.ASM
+.\MACROS.ASM
+

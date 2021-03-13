@@ -1,0 +1,27 @@
+(10U
+			Ultron, UH101
+			Date : November 11, 1997
+
+                   зддддддддддддддддддддддддддддддддддддд©
+                >дд╢  1 /MCLR                     RB7 40 цдд
+          COL1  >дд╢  2 RA0                       RB6 39 цдд
+          COL2  >дд╢  3 RA1                       RB5 38 цдд
+          COL3  >дд╢  4 RA2                       RB4 37 цдд
+          COL4  >дд╢  5 RA3                       RB3 36 цдд< /START
+          COL5  >дд╢  6 RA4/T0CKI                 RB2 35 цдд< /SHOPSEN
+       STANDBY  >дд╢  7 RA5//SS                   RB1 34 цдд< /TIME
+          ROW1  <дд╢  8 RE0//RD               RB0/INT 33 цдд
+          ROW2  <дд╢  9 RE1//WR                   VDD 32 ц
+      /SHCLSEN  >дд╢ 10 RE2//CS                   VSS 31 ц
+                   ╢ 11 VDD                  RD7/PSP7 30 цдд> LCD_DATA_3
+                   ╢ 12 VSS                  RD6/PSP6 29 цдд> LCD_DATA_2
+                   ╢ 13 OSC1/CLKIN           RD5/PSP5 28 цдд> LCD_DATA_1
+                   ╢ 14 OCS2/CLKOUT          RD4/PSP4 27 цдд> LCD_DATA_0
+            N2  <дд╢ 15 RC0/T1OSO/T1CKI     RC7/RX/DT 26 цдд> E
+         UVPWR  <дд╢ 16 RC1/TIOSI/CCP2      RC6/TX/CK 25 цдд> RS
+     DOORLATCH  <дд╢ 17 RC2/CCP1              RC5/SDO 24 цдд
+        SHOPEN  <дд╢ 18 RC3/SCK/SCL       RC4/SDI/SDA 23 цдд< DOORCLOSESEN
+      SHUT_ENA  <дд╢ 19 RD0/PSP0             RD3/PSP3 22 цдд> LED
+         ABORT  >ддЁ 20 RD1/PSP1             RD2/PSP2 21 цдд
+                   юддддддддддддддддддддддддддддддддддддды
+

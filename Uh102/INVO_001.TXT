@@ -1,0 +1,21 @@
+
+
+  To     : Aaron Chan				Invoice : #UH102
+  From   : Randy A. Callaway
+  Ref.   : Invoice
+  Date   : November 12, 1997
+
+	This is an Invoice for partial payment for software development
+	of the USI Model UH102 Wafer UV Curing System.
+
+							$5,000.00
+  		12/05/97	Payment Amount :        $3,000.00
+						      -------------
+  				Balance			$2,000.00
+
+
+
+			Thank You,
+			
+				Randy A. Callaway
+

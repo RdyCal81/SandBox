@@ -1,0 +1,4 @@
+File S:\SandBox\Ultron\Src\Uh102\TABLES.ASM:
+52         NOT_RDY		equ	Str12 - TableStart
+File S:\SandBox\Ultron\Src\Uh102\UH102.ASM:
+63         		movlw	NOT_RDY
