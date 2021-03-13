@@ -1,0 +1,53 @@
+	Long Multiply
+
+	ANS = QUO * DIV			; The Multiply...
+	
+	ANS = 0				; Zero out the answer,
+	
+	Start:				;  The Main loop Start...
+	
+	DIV >> 1			; Shift DIV to the Right by 1
+					;  with LSB going into Carry.
+	
+	if (CARRY)			;  If the carry flag is set
+	 { ANS += QUO;			;  Add the Tempory Value to the
+	 				;   Answer.
+	 }
+
+	CARRY = 0	
+	QUO << 1			; Shift QUO to the left by 1,
+					;  we don't care about the carry.
+
+	loop Start			; Stay in the loop for the number
+					; bits that are being Multiplied..
+	
+	ANS now has the Answer......
+ -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+	Long Divide
+
+	ANS = QUO / DIV			; The Devide...
+	
+	ANS = 0				; Zero out the answer,
+	TMP = 0				;  and a tempory Value...
+	
+	
+	Start:				;  The Main loop Start...
+	
+	CARRY = 0	
+	QUO << 1			; Shift QUO to the Left by 1
+					;  with MSB going into Carry.
+	TMP << 1			; Shift TMP to the Left by 1,
+					;  with MSB of QUO going into LSB
+					;  of TMP, with MSB going into Carry.
+	CARRY = 0	
+	ANS << 1			; Shift ANS to the Left by 1,
+
+	if (TMP >= DIV)			;  If TMP is greater or equal to DIV
+	 { TMP -= DIV;			;  Subtract DIV from TMP,
+	   ANS |= 1;			;   and Set LSB of the Answer.
+	 }
+	
+	loop Start			; Stay in the loop for the number
+					; bits that are being Multiplied..
+	ANS now has the Answer......
+	TMP now has the Remainder...

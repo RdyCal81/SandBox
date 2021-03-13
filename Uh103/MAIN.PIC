@@ -1,0 +1,732 @@
+;COMMENT
+;COMMENT
+;COMMENT
+;COMMENT
+;COMMENT
+;COMMENT
+;COMMENT
+;COMMENT
+;COMMENT
+
+
+
+; -----------------------------------------------------------------------
+; ----- Line #   66 ----- Function : main
+; -----------------------------------------------------------------------
+main:
+		bcf	LED_LED / 8, LED_LED & 7
+;COMMENT
+		call	DisplayVer
+JumpAfterError:
+		bsf	SOL_SHUTTER_OPEN / 8, SOL_SHUTTER_OPEN & 7
+		call	StartVerTimer
+				; ---- Beginning "while     " Ln    76 F   1
+___a:
+;----- if ( !MIN2_FLAG )
+		btfsc	MIN2_FLAG / 8, MIN2_FLAG & 7
+		goto	___b
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln    78 F   2
+		call	Update2SecTImer
+		call	TestHiTemp
+				; ---- Ending    "ExeLoop   " Ln    81 F   2
+		goto	___a
+___b:
+				; ---- Ending    "while     " Ln    81 F   1
+WarmUp:
+		bcf	LED_LED / 8, LED_LED & 7
+		call	ClearLCD
+;COMMENT
+		call	TestHiTemp
+				; ---- Beginning "if        " Ln    91 F   1
+;----- if ( SN_SH_CLOSE )
+		btfss	SN_SH_CLOSE / 8, SN_SH_CLOSE & 7
+		goto	___c
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln    91 F   2
+		call	LCD_Error_PUSh
+				; ---- Ending    "ExeLoop   " Ln    91 F   2
+___c:
+				; ---- Ending    "if        " Ln    91 F   1
+				; ---- Beginning "if        " Ln    92 F   1
+;----- if ( SN_TEMP_LO )
+		btfss	SN_TEMP_LO / 8, SN_TEMP_LO & 7
+		goto	___d
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln    92 F   2
+		call	LCD_Error_PUTempLo
+				; ---- Ending    "ExeLoop   " Ln    92 F   2
+___d:
+				; ---- Ending    "if        " Ln    92 F   1
+				; ---- Beginning "if        " Ln    93 F   1
+;----- if ( SN_HATCH_CLOSE )
+		btfss	SN_HATCH_CLOSE / 8, SN_HATCH_CLOSE & 7
+		goto	___e
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln    93 F   2
+		call	LCD_Error_PUHatchNotClosed
+				; ---- Ending    "ExeLoop   " Ln    93 F   2
+___e:
+				; ---- Ending    "if        " Ln    93 F   1
+;COMMENT
+		call	StrWarmUp
+		call	StartMotorFw
+		call	Start2SecTimer
+		call	ClearCOOL_FAN
+				; ---- Beginning "while     " Ln   104 F   1
+___f:
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   106 F   2
+		bsf	SOL_UV_ON / 8, SOL_UV_ON & 7
+		call	Update2SecTImer
+		call	DisplayTime
+		call	FwMotion
+				; ---- Beginning "if        " Ln   111 F   3
+;----- if ( MIN2_FLAG )
+		btfss	MIN2_FLAG / 8, MIN2_FLAG & 7
+		goto	___h
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   112 F   4
+		call	SetCOOL_FAN
+				; ---- Ending    "ExeLoop   " Ln   112 F   4
+___h:
+				; ---- Ending    "if        " Ln   112 F   3
+				; ---- Beginning "if        " Ln   114 F   3
+;----- if ( !SN_TABLE_HOME )
+		btfsc	SN_TABLE_HOME / 8, SN_TABLE_HOME & 7
+		goto	___i
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   116 F   4
+				; ---- Beginning "if        " Ln   116 F   5
+;----- if ( ___j )
+		movf	Motor_Extra, W
+		andlw	0xFF
+		btfss	STATUS, Z
+		goto	___j
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   117 F   6
+		call	StopTableMotor
+				; ---- Ending    "ExeLoop   " Ln   117 F   6
+___j:
+				; ---- Ending    "if        " Ln   117 F   5
+				; ---- Beginning "if        " Ln   118 F   5
+;----- if ( MIN2_FLAG )
+		btfss	MIN2_FLAG / 8, MIN2_FLAG & 7
+		goto	___k
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   118 F   6
+				; ---- Beginning "goto      " Ln   118 F   7
+		goto	MainLoop
+				; ---- Ending    "goto      " Ln   118 F   7
+				; ---- Ending    "ExeLoop   " Ln   118 F   6
+___k:
+				; ---- Ending    "if        " Ln   118 F   5
+				; ---- Ending    "ExeLoop   " Ln   120 F   4
+___i:
+				; ---- Ending    "if        " Ln   120 F   3
+				; ---- Ending    "ExeLoop   " Ln   121 F   2
+		goto	___f
+___g:
+				; ---- Ending    "while     " Ln   121 F   1
+MainLoop:
+		call	ClearLCD
+		call	StrReady
+		bcf	LED_LED / 8, LED_LED & 7
+				; ---- Beginning "while     " Ln   130 F   1
+___l:
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   132 F   2
+		call	SetCOOL_FAN
+		call	TestHiTemp
+		call	StartSwitch
+		call	ReadKeyPad
+				; ---- Beginning "if        " Ln   136 F   3
+;----- if ( APP_KEY_HIT )
+		btfss	APP_KEY_HIT / 8, APP_KEY_HIT & 7
+		goto	___n
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   138 F   4
+		bcf	START_RUN / 8, START_RUN & 7
+		bcf	APP_KEY_HIT / 8, APP_KEY_HIT & 7
+		call	MainKeyHit
+				; ---- Ending    "ExeLoop   " Ln   142 F   4
+___n:
+				; ---- Ending    "if        " Ln   142 F   3
+;COMMENT
+				; ---- Ending    "ExeLoop   " Ln   158 F   2
+		goto	___l
+___m:
+				; ---- Ending    "while     " Ln   158 F   1
+		return
+
+
+;--End of DoFunct ();
+
+
+
+; - Beginning Asm
+		if ( CAN_RUN )
+	
+; - Ending Asm
+
+
+
+; -----------------------------------------------------------------------
+; ----- Line #  175 ----- Function : StartRunning
+; -----------------------------------------------------------------------
+StartRunning:
+		call	SetDOOR_LOCK
+		call	Wait500ms
+				; ---- Beginning "if        " Ln   178 F   1
+;----- if ( SN_DOOR_CLOSE )
+		btfss	SN_DOOR_CLOSE / 8, SN_DOOR_CLOSE & 7
+		goto	___o
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   178 F   2
+		call	LCD_Error_DoorNotClosed
+				; ---- Ending    "ExeLoop   " Ln   178 F   2
+___o:
+				; ---- Ending    "if        " Ln   178 F   1
+				; ---- Beginning "if        " Ln   179 F   1
+;----- if ( SN_HATCH_CLOSE )
+		btfss	SN_HATCH_CLOSE / 8, SN_HATCH_CLOSE & 7
+		goto	___p
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   179 F   2
+		call	LCD_Error_HatchNotClosed
+				; ---- Ending    "ExeLoop   " Ln   179 F   2
+___p:
+				; ---- Ending    "if        " Ln   179 F   1
+				; ---- Beginning "if        " Ln   180 F   1
+;----- if ( SN_TABLE_HOME )
+		btfss	SN_TABLE_HOME / 8, SN_TABLE_HOME & 7
+		goto	___q
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   180 F   2
+		call	LCD_Error_RunHome
+				; ---- Ending    "ExeLoop   " Ln   180 F   2
+___q:
+				; ---- Ending    "if        " Ln   180 F   1
+;COMMENT
+		bsf	START_RUN / 8, START_RUN & 7
+; - Beginning Asm
+		if ( SPEED_CONFIG )
+	
+; - Ending Asm
+				; ---- Beginning "if        " Ln   187 F   1
+;----- if ( !SPEED_IS_SET )
+		btfsc	SPEED_IS_SET / 8, SPEED_IS_SET & 7
+		goto	___r
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   187 F   2
+		call	SpeedConfig
+				; ---- Ending    "ExeLoop   " Ln   187 F   2
+___r:
+				; ---- Ending    "if        " Ln   187 F   1
+SpeedConfigReturn:
+; - Beginning Asm
+		endif
+	
+; - Ending Asm
+		call	SetRunSpeed
+		call	LCD_Curing
+		bsf	LED_LED / 8, LED_LED & 7
+		call	SetDOOR_LOCK
+		call	Wait500ms
+				; ---- Beginning "if        " Ln   201 F   1
+;----- if ( SN_DOOR_CLOSE )
+		btfss	SN_DOOR_CLOSE / 8, SN_DOOR_CLOSE & 7
+		goto	___s
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   201 F   2
+		call	LCD_Error_DoorNotClosed
+				; ---- Ending    "ExeLoop   " Ln   201 F   2
+___s:
+				; ---- Ending    "if        " Ln   201 F   1
+		bsf	SOL_N2_ON / 8, SOL_N2_ON & 7
+		bcf	SOL_SHUTTER_OPEN / 8, SOL_SHUTTER_OPEN & 7
+				; ---- Beginning "for       " Ln   206 F   1
+;----- Debounce = 3,000
+		movlw	D'184'
+		movwf	Debounce
+		movlw	 D'11'
+		movwf	 Debounce + 1
+___t:
+	;O_J16Int: if ( Debounce )
+		movf	Debounce, W
+		iorwf	Debounce + 1, W
+		btfsc	STATUS, Z
+		goto	___u
+	; -- For M
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   208 F   2
+				; ---- Beginning "if        " Ln   208 F   3
+;----- if ( !SN_SH_OPEN )
+		btfsc	SN_SH_OPEN / 8, SN_SH_OPEN & 7
+		goto	___v
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   208 F   4
+				; ---- Beginning "goto      " Ln   208 F   5
+		goto	ForExit01
+				; ---- Ending    "goto      " Ln   208 F   5
+				; ---- Ending    "ExeLoop   " Ln   208 F   4
+___v:
+				; ---- Ending    "if        " Ln   208 F   3
+		call	TestHiTemp
+				; ---- Ending    "ExeLoop   " Ln   211 F   2
+	; -- For Gb
+		goto	___t
+___u:
+				; ---- Ending    "for       " Ln   211 F   1
+		call	LCD_Error_ShutterNotOpen
+ForExit01:
+;COMMENT
+		bcf	MOTOR_ERROR / 8, MOTOR_ERROR & 7
+;----- Debounce = 10,000
+		movlw	D'16'
+		movwf	Debounce
+		movlw	 D'39'
+		movwf	 Debounce + 1
+		bcf	SUB_MAX_PULSES / 8, SUB_MAX_PULSES & 7
+		call	StartMotorBk
+		bsf	ACC_NOT_COMPLETE / 8, ACC_NOT_COMPLETE & 7
+; - Beginning Asm
+Mmm_01:   
+		call	MotorMovement
+		jnb     SN_TABLE_BACK, EndRun2Back
+		btfsc	ACC_NOT_COMPLETE / 8, ACC_NOT_COMPLETE & 7
+		jmp	Mmm_01
+  
+; - Ending Asm
+;COMMENT
+		bsf	SUB_MAX_PULSES / 8, SUB_MAX_PULSES & 7
+; - Beginning Asm
+Mmm_02:   
+		call	MotorMovement
+		jnb     SN_TABLE_BACK, EndRun2Back
+		btfss	ACC_NOT_COMPLETE / 8, ACC_NOT_COMPLETE & 7
+		jmp	Mmm_02
+  
+; - Ending Asm
+;COMMENT
+				; ---- Beginning "while     " Ln   248 F   1
+___w:
+;----- if ( MOT_ENA )
+		btfss	MOT_ENA / 8, MOT_ENA & 7
+		goto	___x
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   250 F   2
+		call	MotorMovement
+				; ---- Beginning "if        " Ln   251 F   3
+;----- if ( !SN_TABLE_BACK )
+		btfsc	SN_TABLE_BACK / 8, SN_TABLE_BACK & 7
+		goto	___y
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   251 F   4
+				; ---- Beginning "goto      " Ln   251 F   5
+		goto	EndRun2Back
+				; ---- Ending    "goto      " Ln   251 F   5
+				; ---- Ending    "ExeLoop   " Ln   251 F   4
+___y:
+				; ---- Ending    "if        " Ln   251 F   3
+				; ---- Ending    "ExeLoop   " Ln   253 F   2
+		goto	___w
+___x:
+				; ---- Ending    "while     " Ln   253 F   1
+		bsf	MOTOR_ERROR / 8, MOTOR_ERROR & 7
+EndRun2Back:
+		bsf	ACC_NOT_COMPLETE / 8, ACC_NOT_COMPLETE & 7
+		bcf	MOT_ENA / 8, MOT_ENA & 7
+		bcf	MOT_STEP / 8, MOT_STEP & 7
+; - Beginning Asm
+      Timer0Off
+  
+; - Ending Asm
+		bsf	SOL_SHUTTER_OPEN / 8, SOL_SHUTTER_OPEN & 7
+				; ---- Beginning "for       " Ln   267 F   1
+;----- Debounce = 3,000
+		movlw	D'184'
+		movwf	Debounce
+		movlw	 D'11'
+		movwf	 Debounce + 1
+___z:
+	;O_J16Int: if ( Debounce )
+		movf	Debounce, W
+		iorwf	Debounce + 1, W
+		btfsc	STATUS, Z
+		goto	__aa
+	; -- For M
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   269 F   2
+				; ---- Beginning "if        " Ln   269 F   3
+;----- if ( !SN_SH_CLOSE )
+		btfsc	SN_SH_CLOSE / 8, SN_SH_CLOSE & 7
+		goto	__ab
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   269 F   4
+				; ---- Beginning "goto      " Ln   269 F   5
+		goto	ForExit02
+				; ---- Ending    "goto      " Ln   269 F   5
+				; ---- Ending    "ExeLoop   " Ln   269 F   4
+__ab:
+				; ---- Ending    "if        " Ln   269 F   3
+				; ---- Ending    "ExeLoop   " Ln   271 F   2
+	; -- For Gb
+		goto	___z
+__aa:
+				; ---- Ending    "for       " Ln   271 F   1
+		call	LCD_Error_ShutterNotClose
+ForExit02:
+				; ---- Beginning "if        " Ln   275 F   1
+;----- if ( MOTOR_ERROR )
+		btfss	MOTOR_ERROR / 8, MOTOR_ERROR & 7
+		goto	__ac
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   276 F   2
+		call	LCD_Error_Motor2Back
+				; ---- Ending    "ExeLoop   " Ln   276 F   2
+__ac:
+				; ---- Ending    "if        " Ln   276 F   1
+;COMMENT
+;COMMENT
+		call	Wait250ms
+		call	StartMotorFw
+;COMMENT
+		call	SetMaxSpeed
+;----- Debounce = 10,000
+		movlw	D'16'
+		movwf	Debounce
+		movlw	 D'39'
+		movwf	 Debounce + 1
+; - Beginning Asm
+Mmm_03:   
+		btfss	MOT_ENA / 8, MOT_ENA & 7
+		jmp	AtHomePos
+		call	MotorMovement
+		btfsc	ACC_NOT_COMPLETE / 8, ACC_NOT_COMPLETE & 7
+		jmp	Mmm_03
+  
+; - Ending Asm
+		bcf	SUB_MAX_PULSES / 8, SUB_MAX_PULSES & 7
+; - Beginning Asm
+Mmm_04:   
+		btfss	MOT_ENA / 8, MOT_ENA & 7
+		jmp	AtHomePos
+		call	MotorMovement
+		btfss	ACC_NOT_COMPLETE / 8, ACC_NOT_COMPLETE & 7
+		jmp	Mmm_04
+  
+; - Ending Asm
+				; ---- Beginning "while     " Ln   309 F   1
+__ad:
+;----- if ( MOT_ENA )
+		btfss	MOT_ENA / 8, MOT_ENA & 7
+		goto	__ae
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   311 F   2
+		call	MotorMovement
+				; ---- Ending    "ExeLoop   " Ln   313 F   2
+		goto	__ad
+__ae:
+				; ---- Ending    "while     " Ln   313 F   1
+AtHomePos:
+				; ---- Beginning "if        " Ln   315 F   1
+;----- if ( SN_TABLE_HOME )
+		btfss	SN_TABLE_HOME / 8, SN_TABLE_HOME & 7
+		goto	__af
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   315 F   2
+		call	LCD_Error_RunHome
+				; ---- Ending    "ExeLoop   " Ln   315 F   2
+__af:
+				; ---- Ending    "if        " Ln   315 F   1
+		bcf	MOT_STEP / 8, MOT_STEP & 7
+MainEndLoop:
+		call	ClearDOOR_LOCK
+		bcf	SOL_N2_ON / 8, SOL_N2_ON & 7
+;----- Debounce = 0
+		clrf	Debounce
+		clrf	Debounce + 1
+		call	ClearLCD
+		call	StrReady
+				; ---- Beginning "while     " Ln   327 F   1
+__ag:
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   329 F   2
+		call	TestHiTemp
+		call	StartSwitch
+				; ---- Beginning "if        " Ln   332 F   3
+;----- if ( SN_DOOR_CLOSE )
+		btfss	SN_DOOR_CLOSE / 8, SN_DOOR_CLOSE & 7
+		goto	__ai
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   332 F   4
+		call	MainLoop
+				; ---- Ending    "ExeLoop   " Ln   332 F   4
+__ai:
+				; ---- Ending    "if        " Ln   332 F   3
+		call	ReadKeyPad
+				; ---- Beginning "if        " Ln   335 F   3
+;----- if ( APP_KEY_HIT )
+		btfss	APP_KEY_HIT / 8, APP_KEY_HIT & 7
+		goto	__aj
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   337 F   4
+		bcf	START_RUN / 8, START_RUN & 7
+		bcf	APP_KEY_HIT / 8, APP_KEY_HIT & 7
+		call	MainKeyHit
+				; ---- Ending    "ExeLoop   " Ln   341 F   4
+__aj:
+				; ---- Ending    "if        " Ln   341 F   3
+				; ---- Beginning "if        " Ln   343 F   3
+	;O_J16NotInt: if ( Debounce )
+		movf	Debounce, W
+		iorwf	Debounce + 1, W
+		btfss	STATUS, Z
+		goto	__ak
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   345 F   4
+;----- Debounce = 250
+		movlw	D'250'
+		movwf	Debounce
+		clrf	Debounce + 1
+; - Beginning Asm
+		jb	LED_LED, MainqLED_Off
+		setb	LED_LED
+		jmp	MainqLED_End
+MainqLED_Off:
+		clr	LED_LED
+MainqLED_End:
+	
+; - Ending Asm
+				; ---- Ending    "ExeLoop   " Ln   355 F   4
+__ak:
+				; ---- Ending    "if        " Ln   355 F   3
+				; ---- Ending    "ExeLoop   " Ln   356 F   2
+		goto	__ag
+__ah:
+				; ---- Ending    "while     " Ln   356 F   1
+		return
+
+
+;--End of DoFunct ();
+
+
+
+
+
+
+; -----------------------------------------------------------------------
+; ----- Line #  393 ----- Function : RunCalibration
+; -----------------------------------------------------------------------
+RunCalibration:
+		call	SetDOOR_LOCK
+		call	Wait500ms
+				; ---- Beginning "if        " Ln   396 F   1
+;----- if ( SN_DOOR_CLOSE )
+		btfss	SN_DOOR_CLOSE / 8, SN_DOOR_CLOSE & 7
+		goto	__al
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   396 F   2
+		call	LCD_Error_DoorNotClosed
+				; ---- Ending    "ExeLoop   " Ln   396 F   2
+__al:
+				; ---- Ending    "if        " Ln   396 F   1
+				; ---- Beginning "if        " Ln   397 F   1
+;----- if ( SN_HATCH_CLOSE )
+		btfss	SN_HATCH_CLOSE / 8, SN_HATCH_CLOSE & 7
+		goto	__am
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   397 F   2
+		call	LCD_Error_HatchNotClosed
+				; ---- Ending    "ExeLoop   " Ln   397 F   2
+__am:
+				; ---- Ending    "if        " Ln   397 F   1
+				; ---- Beginning "if        " Ln   398 F   1
+;----- if ( SN_TABLE_HOME )
+		btfss	SN_TABLE_HOME / 8, SN_TABLE_HOME & 7
+		goto	__an
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   398 F   2
+		call	LCD_Error_RunHome
+				; ---- Ending    "ExeLoop   " Ln   398 F   2
+__an:
+				; ---- Ending    "if        " Ln   398 F   1
+;COMMENT
+		call	SetMinSpeed
+		call	LCD_Calibration
+		bsf	LED_LED / 8, LED_LED & 7
+		call	SetDOOR_LOCK
+		call	Wait500ms
+				; ---- Beginning "if        " Ln   408 F   1
+;----- if ( SN_DOOR_CLOSE )
+		btfss	SN_DOOR_CLOSE / 8, SN_DOOR_CLOSE & 7
+		goto	__ao
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   408 F   2
+		call	LCD_Error_DoorNotClosed
+				; ---- Ending    "ExeLoop   " Ln   408 F   2
+__ao:
+				; ---- Ending    "if        " Ln   408 F   1
+		bsf	SOL_N2_ON / 8, SOL_N2_ON & 7
+;COMMENT
+;COMMENT
+		bcf	MOTOR_ERROR / 8, MOTOR_ERROR & 7
+;----- Debounce = 10,000
+		movlw	D'16'
+		movwf	Debounce
+		movlw	 D'39'
+		movwf	 Debounce + 1
+		bcf	SUB_MAX_PULSES / 8, SUB_MAX_PULSES & 7
+		call	StartMotorBk
+; - Beginning Asm
+CalMmm_01:   
+		call	TestForCalibrationLimit
+		jnb     SN_TABLE_BACK, CalEndRun2Back
+		jnb	MOT_ENA, CalEndRun2Back
+		jmp	CalMmm_01
+  
+; - Ending Asm
+CalEndRun2Back:
+		bsf	ACC_NOT_COMPLETE / 8, ACC_NOT_COMPLETE & 7
+		bcf	MOT_ENA / 8, MOT_ENA & 7
+		bcf	MOT_STEP / 8, MOT_STEP & 7
+; - Beginning Asm
+      Timer0Off
+  
+; - Ending Asm
+		bcf	SOL_SHUTTER_OPEN / 8, SOL_SHUTTER_OPEN & 7
+				; ---- Beginning "for       " Ln   449 F   1
+;----- Debounce = 3,000
+		movlw	D'184'
+		movwf	Debounce
+		movlw	 D'11'
+		movwf	 Debounce + 1
+__ap:
+	;O_J16Int: if ( Debounce )
+		movf	Debounce, W
+		iorwf	Debounce + 1, W
+		btfsc	STATUS, Z
+		goto	__aq
+	; -- For M
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   451 F   2
+				; ---- Beginning "if        " Ln   451 F   3
+;----- if ( !SN_SH_OPEN )
+		btfsc	SN_SH_OPEN / 8, SN_SH_OPEN & 7
+		goto	__ar
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   451 F   4
+				; ---- Beginning "goto      " Ln   451 F   5
+		goto	CaliExit01
+				; ---- Ending    "goto      " Ln   451 F   5
+				; ---- Ending    "ExeLoop   " Ln   451 F   4
+__ar:
+				; ---- Ending    "if        " Ln   451 F   3
+		call	TestHiTemp
+				; ---- Ending    "ExeLoop   " Ln   454 F   2
+	; -- For Gb
+		goto	__ap
+__aq:
+				; ---- Ending    "for       " Ln   454 F   1
+		call	LCD_Error_ShutterNotOpen
+CaliExit01:
+				; ---- Beginning "for       " Ln   458 F   1
+;----- Debounce = 2,000
+		movlw	D'208'
+		movwf	Debounce
+		movlw	 D'7'
+		movwf	 Debounce + 1
+__as:
+	;O_J16Int: if ( Debounce )
+		movf	Debounce, W
+		iorwf	Debounce + 1, W
+		btfsc	STATUS, Z
+		goto	__at
+	; -- For M
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   460 F   2
+		call	TestHiTemp
+				; ---- Ending    "ExeLoop   " Ln   462 F   2
+	; -- For Gb
+		goto	__as
+__at:
+				; ---- Ending    "for       " Ln   462 F   1
+		bsf	SOL_SHUTTER_OPEN / 8, SOL_SHUTTER_OPEN & 7
+				; ---- Beginning "for       " Ln   465 F   1
+;----- Debounce = 3,000
+		movlw	D'184'
+		movwf	Debounce
+		movlw	 D'11'
+		movwf	 Debounce + 1
+__au:
+	;O_J16Int: if ( Debounce )
+		movf	Debounce, W
+		iorwf	Debounce + 1, W
+		btfsc	STATUS, Z
+		goto	__av
+	; -- For M
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   467 F   2
+				; ---- Beginning "if        " Ln   467 F   3
+;----- if ( !SN_SH_CLOSE )
+		btfsc	SN_SH_CLOSE / 8, SN_SH_CLOSE & 7
+		goto	__aw
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   467 F   4
+				; ---- Beginning "goto      " Ln   467 F   5
+		goto	CalForExit02
+				; ---- Ending    "goto      " Ln   467 F   5
+				; ---- Ending    "ExeLoop   " Ln   467 F   4
+__aw:
+				; ---- Ending    "if        " Ln   467 F   3
+				; ---- Ending    "ExeLoop   " Ln   469 F   2
+	; -- For Gb
+		goto	__au
+__av:
+				; ---- Ending    "for       " Ln   469 F   1
+		call	LCD_Error_ShutterNotClose
+CalForExit02:
+;COMMENT
+;COMMENT
+		call	Wait250ms
+		call	SetMinSpeed
+		call	CalibrationMotorFw
+;----- Debounce = 10,000
+		movlw	D'16'
+		movwf	Debounce
+		movlw	 D'39'
+		movwf	 Debounce + 1
+; - Beginning Asm
+CalMmm_03:   
+		call	CalibMotorMovement
+		btfss	MOT_ENA / 8, MOT_ENA & 7
+		jmp	CalAtHomePos
+		jmp	CalMmm_03
+  
+; - Ending Asm
+CalAtHomePos:
+				; ---- Beginning "if        " Ln   490 F   1
+;----- if ( SN_TABLE_HOME )
+		btfss	SN_TABLE_HOME / 8, SN_TABLE_HOME & 7
+		goto	__ax
+				;ExeLoop w/ typ = NO
+				; ---- Beginning "ExeLoop   " Ln   490 F   2
+		call	LCD_Error_RunHome
+				; ---- Ending    "ExeLoop   " Ln   490 F   2
+__ax:
+				; ---- Ending    "if        " Ln   490 F   1
+		bcf	MOT_STEP / 8, MOT_STEP & 7
+		call	MainEndLoop
+		return
+
+
+;--End of DoFunct ();
+
+
+
+; - Beginning Asm
+		endif
+	
+; - Ending Asm
+; --- End of Compilation ---

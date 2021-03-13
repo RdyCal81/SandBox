@@ -1,0 +1,13 @@
+	FileName : UH130\DT.TXT
+
+    1 : 10.29.98 (dt.1) At power up the uP needs to initialize the Outputs
+    	much quicker
+    2 : 10.29.98 (dt.2) The stop Switch should not effect the CLAMP
+    3 : 10.29.98 (dt.3) The stop Switch should be a toggle, first stop
+	stop everything, the next time turn off the STOP Ind, then look
+	for other switches
+    4 : 10.29.98 (dt.4) Get rid of the HomeFound variable and only change
+	the Clamp if Home sensor is active
+    5 : 11.09.98 (dt.5) Make jog time 100ms vs. 1sec
+    6 : 11.09.98 (dt.6) Turn off Start LED if clamp is not active and the
+	user lets go of the switch

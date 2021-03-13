@@ -1,0 +1,21 @@
+
+
+  To     : Aaron Chan				Invoice : #UH130
+  From   : Randy A. Callaway
+  Ref.   : Invoice
+  Date   : October 29, 1998
+
+	This is an Invoice for full payment for software development
+	of the USI Model UH130 System.
+
+							$1,500.00
+  		10/29/98	Payment Amount :        $1,500.00
+						      -------------
+  				Balance			    $0.00
+
+
+
+			Thank You,
+			
+				Randy A. Callaway
+

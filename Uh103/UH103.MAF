@@ -1,0 +1,22 @@
+
+
+t	=UH103
+a	=MPASMWIN /q- $(@B)
+
+cpic	=\ultron\smallc\smallc_p /c $(@B).C
+
+PATH	=\MPLAB
+
+all:	$t.ver main.pic main1.pic motor.pic speed.pic $t.hex
+
+.C.PIC		:
+	$(cpic)
+
+$t.ver		: *.asm *.inc *.c
+	\rac_doc\version $(@B).VER
+
+$t.hex		: *.asm *.c *.h *.inc *.pic
+	$a
+
+
+

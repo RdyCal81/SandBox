@@ -1,0 +1,176 @@
+
+
+
+; -----------------------------------------------------------------------
+; ----- Line #   23 ----- Function : SetMotor
+; -----------------------------------------------------------------------
+SetMotor:
+;----- Motor_Extra = 6;
+		movlw	D'6'
+		movwf	Motor_Extra	;
+		bsf	MOT_ENA / 8, MOT_ENA & 7
+		bcf	TIME0_MOD / 8, TIME0_MOD & 7
+; - Beginning Asm
+     Timer0On
+     	
+; - Ending Asm
+		return
+
+
+;--End of DoFunct ();
+
+
+
+
+
+
+; -----------------------------------------------------------------------
+; ----- Line #   35 ----- Function : StartMotorFw
+; -----------------------------------------------------------------------
+StartMotorFw:
+		bcf	MOT_DIR / 8, MOT_DIR & 7
+		call	InitTableCnt
+		call	SetMotor
+		return
+
+
+;--End of DoFunct ();
+
+
+
+
+
+
+; -----------------------------------------------------------------------
+; ----- Line #   43 ----- Function : CalibrationMotorFw
+; -----------------------------------------------------------------------
+CalibrationMotorFw:
+		bcf	MOT_DIR / 8, MOT_DIR & 7
+;COMMENT
+		call	SetMotor
+		return
+
+
+;--End of DoFunct ();
+
+
+
+
+
+
+; -----------------------------------------------------------------------
+; ----- Line #   53 ----- Function : StartMotorBk
+; -----------------------------------------------------------------------
+StartMotorBk:
+		bsf	MOT_DIR / 8, MOT_DIR & 7
+;----- TableCnt = 0
+		clrf	TableCnt
+		clrf	TableCnt + 1
+		call	SetMotor
+		return
+
+
+;--End of DoFunct ();
+
+
+
+
+
+
+; -----------------------------------------------------------------------
+; ----- Line #   62 ----- Function : FwMotion
+; -----------------------------------------------------------------------
+FwMotion:
+		call	TestHiTemp
+				; ---- Beginning "if        " Ln    63 F   1
+;----- if ( !MOT_ENA )
+		btfsc	MOT_ENA / 8, MOT_ENA & 7
+		goto	_B_a
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln    65 F   2
+; - Beginning Asm
+      Timer0Off
+    
+; - Ending Asm
+				; ---- Ending    "ExeLoop   " Ln    69 F   2
+_B_a:
+				; ---- Ending    "if        " Ln    69 F   1
+		return
+
+
+;--End of DoFunct ();
+
+
+
+; - Beginning Asm
+		if ( CAN_RUN )
+MotorMovement:	call	TestHiTemp
+		call	Accelerate
+		movf	Debounce, W
+		iorwf	Debounce + 1, W
+		btfss	STATUS, Z
+		return
+		jmp	LCD_Error_MotorTimeOut
+
+		endif
+	
+; - Ending Asm
+
+
+
+; -----------------------------------------------------------------------
+; ----- Line #   90 ----- Function : BkMotion
+; -----------------------------------------------------------------------
+BkMotion:
+		call	TestHiTemp
+				; ---- Beginning "if        " Ln    91 F   1
+;----- if ( !MOT_ENA )
+		btfsc	MOT_ENA / 8, MOT_ENA & 7
+		goto	_B_b
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln    93 F   2
+; - Beginning Asm
+      Timer0Off
+    
+; - Ending Asm
+				; ---- Ending    "ExeLoop   " Ln    97 F   2
+_B_b:
+				; ---- Ending    "if        " Ln    97 F   1
+		return
+
+
+;--End of DoFunct ();
+
+
+
+
+
+
+; -----------------------------------------------------------------------
+; ----- Line #  103 ----- Function : StopTableMotor
+; -----------------------------------------------------------------------
+StopTableMotor:
+				; ---- Beginning "if        " Ln   104 F   1
+;----- if ( _B_c )
+		movf	Motor_Extra, W
+		andlw	0xFF
+		btfss	STATUS, Z
+		goto	_B_c
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   106 F   2
+		bcf	MOT_ENA / 8, MOT_ENA & 7
+; - Beginning Asm
+         Timer0Off
+      
+; - Ending Asm
+				; ---- Ending    "ExeLoop   " Ln   111 F   2
+_B_c:
+				; ---- Ending    "if        " Ln   111 F   1
+		return
+
+
+;--End of DoFunct ();
+
+
+
+; --- End of Compilation ---

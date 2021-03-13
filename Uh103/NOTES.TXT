@@ -1,0 +1,29 @@
+
+	Aaron : 529-1485
+	
+03/24/97 Drove to Moorpark during lunch with the 1st revision of the Code.
+03/26/97 Drove to Moorpark during lunch with the 2nd revision of the Code.
+03/27/97 1 hour fixing bugs from Arron on Phone call of 03/26/97
+
+	ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+	³	Things that need to be fixed.				³
+	ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+03/26/97 : StandBy is one word... ( timing ?? )
+
+
+	ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+	³	Labels to look for to find Fixes.			³
+	ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+03/27/97 N_0002: LCD was intermittant.
+	 N_0003: Beep was too long and came on with an External Interrupt.
+	 N_0004: After Starting look at InOut switch to stop...
+	 N_0005: Jump to Main1 after entering "SET TIME"
+	 	
+03/26/97 N_0001: Tested wrong flag (C, not z) in checking for time.
+	No Blank LCD.
+	Put UH101 on LCD initially.
+	StandBy switch is regular debounce not 2seconds.
+	Center "STANDBY"
+	
+	: 
+

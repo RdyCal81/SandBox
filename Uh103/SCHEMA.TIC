@@ -1,0 +1,50 @@
+
+			Ultron, UH103
+			Date : October 20, 1998
+
+                     зддддддддддддддддддддддддддддддддддддд©
+                  >дд╢  1 /MCLR                     RB7 40 цдд> MOT_STEP
+          IO_COL1 >дд╢  2 RA0                       RB6 39 цдд> MOT_ENA
+          IO_COL2 >дд╢  3 RA1                       RB5 38 цдд> MOT_DIR
+          IO_COL3 >дд╢  4 RA2                       RB4 37 цдд< SN_TEMP_HI
+          IO_COL4 >дд╢  5 RA3                       RB3 36 цдд< SW_START
+          IO_COL5 >дд╢  6 RA4/T0CKI                 RB2 35 цдд< SN_SH_OPEN
+    SN_TABLE_BACK >дд╢  7 RA5//SS                   RB1 34 цдд< SN_TEMP_LO
+          IO_ROW1 <дд╢  8 RE0//RD             INT / RB0 33 цдд
+          IO_ROW2 <дд╢  9 RE1//WR                   VDD 32 цдд
+      SN_SH_CLOSE >дд╢ 10 RE2//CS                   VSS 31 Ё
+                   дд╢ 11 VDD                  RD7/PSP7 30 цдд<> DATA_7
+                   дд╢ 12 VSS                  RD6/PSP6 29 цдд<> DATA_6
+                   дд╢ 13 OSC1/CLKIN           RD5/PSP5 28 цдд<> DATA_5
+                   дд╢ 14 OCS2/CLKOUT          RD4/PSP4 27 цдд<> DATA_4
+        SOL_N2_ON <дд╢ 15 RC0/T1OSO/T1CKI     RC7/RX/DT 26 цдд>  LCD_E   
+        SOL_UV_ON <дд╢ 16 RC1/TIOSI/CCP2      RC6/TX/CK 25 цдд>  LCD_RS    
+          LED_LED <дд╢ 17 RC2/CCP1              RC5/SDO 24 цдд<  SN_DOOR_CLOSE
+ SOL_SHUTTER_OPEN <дд╢ 18 RC3/SCK/SCL       RC4/SDI/SDA 23 цдд<  SN_HATCH_CLOSE
+    SOL_DOOR_LOCK <дд╢ 19 RD0/PSP0             RD3/PSP3 22 цдд>  SOL_COOL_FAN
+    SN_TABLE_HOME <ддЁ 20 RD1/PSP1             RD2/PSP2 21 цдд
+                     юддддддддддддддддддддддддддддддддддддды
+
+      ддддддддддддддддддд©                ддддддддддддддддддд©
+                     D0  цдд>                            D0  цдд>
+                     D1  цдд>                            D1  цдд>
+                     D2  цдд>                            D2  цдд>
+                     D3  цдд>                            D3  цдд> 
+                     D4  цдд>                            D4  цдд> 
+                     D5  цдд>                            D5  цдд> 
+                     D6  цдд>                            D6  цдд> 
+                     D7  цдд>                            D7  цдд>
+      ддддддддддддддддддды                ддддддддддддддддддды
+
+                зддддддддддддддддддд                   зддддддддддддддддддд
+             <дд╢  D0                               <дд╢  D0
+             <дд╢  D1                               <дд╢  D1
+             <дд╢  D2                               <дд╢  D2
+             <дд╢  D3                               <дд╢  D3     
+             <дд╢  D4                               <дд╢  D4     
+             <дд╢  D5                               <дд╢  D5
+             <дд╢  D6                               <дд╢  D6
+             <дд╢  D7                               <дд╢  D7
+                юддддддддддддддддддд                   юддддддддддддддддддд
+
+

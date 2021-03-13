@@ -1,0 +1,24 @@
+(10U
+   Document # : ULTRON 101		     File Name  : ULTRON.PRJ
+   Author     : Randy A. Callaway	     Date       : Mon. Apr. 7, 1997.
+   Project    : 101			     People     : Aaron, Ultron
+   Enviroment : PIC16C65aA
+зддддддддбдддддддддддддддддддддддддддддддддддддддддддддддддддддддддбдддддддддд©
+Ё  REV.  Ё                   Development Comments.                 Ё   DATE   Ё
+цддддддддедддддддддддддддддддддддддддддддддддддддддддддддддддддддддедддддддддд╢
+Ё  Dev   Ё Began development.                                      Ё ??/??/95 Ё
+Ё N_0006 Ё LCD is Still Intermittant.				   Ё 04/07/97 Ё
+Ё N_0007 Ё Exposure time, Only In/Out Key, Not Start		   Ё	      Ё
+Ё N_0008 Ё Motor Overload or TimeOut, N2= Off, UV= Off    	   Ё	      Ё
+Ё N_0009 Ё WarmUp to 15Seconds, Xtal to 12Mhz		    	   Ё	      Ё
+Ё N_0010 Ё KeyPad takes too long, I could not duplicate 	   Ё 04/08/97 Ё
+Ё N_0011 Ё Jump to Wait: was not clearing the initial 1ms bit.	   Ё	      Ё
+Ё N_0012 Ё Going to line 2 on LCD called and should have jumped.   Ё	      Ё
+Ё	 Ё							   Ё	      Ё
+цдддддддды							   юдддддддддд╢
+Ё									      Ё
+цддддддддддбдддддддддддддддддддддддддддддддддддддддддддддддддддддддбдддддддддд╢
+юддддддддддадддддддддддддддддддддддддддддддддддддддддддддддддддддддадддддддддды
+
+
+

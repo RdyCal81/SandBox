@@ -1,0 +1,207 @@
+
+
+
+; -----------------------------------------------------------------------
+; ----- Line #   17 ----- Function : SetTheKey
+; -----------------------------------------------------------------------
+SetTheKey:
+; - Beginning Asm
+		movf	PrevKeyRead, W
+		movwf	TEMP
+		movlw	5
+		movwf	ANS_L
+
+key_start:
+		rrf	TEMP, F
+		jc	GoodKeyRead	
+		decfsz	ANS_L, F
+		jmp	key_start
+
+GoodKeyRead:
+		movf	ANS_L, W			
+	
+; - Ending Asm
+		return
+
+
+;--End of DoFunct ();
+
+
+
+
+
+
+; -----------------------------------------------------------------------
+; ----- Line #   36 ----- Function : ReadKeyPad
+; -----------------------------------------------------------------------
+ReadKeyPad:
+; - Beginning Asm
+		jnb	KEY_TIME_FLAG, NoKeyTick
+		clr	KEY_TIME_FLAG
+
+
+		movf	PORTA, W
+		andlw	B'00011111'
+		xorlw	B'00011111'
+		movwf	TEMP
+		xorlw	0x1F
+		jz	NoKeyAtThisTime		; found all ones..
+		xorlw	0x1F
+		xorwf	PrevKeyRead, W
+		jnz	keyIsNotTheSame
+		movf	KeyDebounce, W
+		xorlw	0xFF
+		jnz	KeepDebouncing
+		jb	KEY_IS_HIT, NoKeyTick
+		setb	KEY_IS_HIT
+
+
+		movf	PrevKeyRead, W
+		movwf	TEMP
+		movlw	4
+		movwf	ANS_L
+
+key_start:
+		rrf	TEMP, F
+		jc	GoodKeyRead	
+		decfsz	ANS_L, F
+		jmp	key_start
+GoodKeyRead:
+		movf	ANS_L, W
+		btfsc	PORTE, 0	; KEY_ROW1
+		addlw	5
+		return			
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+			
+
+KeepDebouncing:
+		decf	KeyDebounce, F
+		jmp	NoKeyTick
+
+NoKeyAtThisTime:
+		jb	KEY_ROW1, TestRow2
+		setb	KEY_ROW1
+		clr	KEY_ROW2
+		jmp	keyIsNotTheSame
+TestRow2:
+		jb	KEY_ROW2, SetUpRows
+		setb	KEY_ROW1
+		setb	KEY_ROW2
+		jmp	keyIsNotTheSame
+SetUpRows:	
+		clr	KEY_ROW1
+	       ;setb	KEY_ROW2
+
+
+
+keyIsNotTheSame:
+		movf	TEMP, W
+		movwf	PrevKeyRead
+		movlw	D'10'			; 10ms debounce time...
+		movwf	KeyDebounce
+		clr	KEY_IS_HIT
+
+
+NoKeyTick:
+		movlw	D'10'
+	
+; - Ending Asm
+		return
+
+
+;--End of DoFunct ();
+
+
+
+
+
+
+; -----------------------------------------------------------------------
+; ----- Line #  126 ----- Function : KeyFunc
+; -----------------------------------------------------------------------
+KeyFunc:
+				; ---- Beginning "if        " Ln   126 F   1
+;----- if ( !KEY_ROW1 )
+		btfsc	KEY_ROW1 / 8, KEY_ROW1 & 7
+		goto	_C_a
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   128 F   2
+		call	ReadKeyPad
+; - Beginning Asm
+		jc	BadRead1
+		jz	GoodKey1
+		return
+GoodKey1:
+		call	SetTheKey
+		jmp	Key1Table
+
+BadRead1:
+		setb	KEY_ROW1
+		clr	KEY_ROW2
+		return	
+	
+; - Ending Asm
+				; ---- Ending    "ExeLoop   " Ln   143 F   2
+_C_a:
+				; ---- Ending    "if        " Ln   143 F   1
+				; ---- Beginning "if        " Ln   144 F   1
+;----- if ( !KEY_ROW2 )
+		btfsc	KEY_ROW2 / 8, KEY_ROW2 & 7
+		goto	_C_b
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   146 F   2
+		call	ReadKeyPad
+; - Beginning Asm
+		jc	BadRead2
+		jz	GoodKey2
+		return
+
+GoodKey2:
+		call	SetTheKey
+		jmp	Key2Table
+
+
+BadRead2:
+		setb	KEY_ROW1
+		setb	KEY_ROW2
+		return	
+	
+; - Ending Asm
+				; ---- Ending    "ExeLoop   " Ln   163 F   2
+_C_b:
+				; ---- Ending    "if        " Ln   163 F   1
+				; ---- Beginning "if        " Ln   164 F   1
+;----- if ( KEY_TIME_FLAG )
+		btfss	KEY_TIME_FLAG / 8, KEY_TIME_FLAG & 7
+		goto	_C_c
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln   166 F   2
+		bcf	KEY_ROW1 / 8, KEY_ROW1 & 7
+		bsf	KEY_ROW2 / 8, KEY_ROW2 & 7
+		bcf	KEY_TIME_FLAG / 8, KEY_TIME_FLAG & 7
+				; ---- Ending    "ExeLoop   " Ln   170 F   2
+_C_c:
+				; ---- Ending    "if        " Ln   170 F   1
+; - Beginning Asm
+		movlw	D'10'
+	
+; - Ending Asm
+		return
+
+
+;--End of DoFunct ();
+
+
+
+; --- End of Compilation ---

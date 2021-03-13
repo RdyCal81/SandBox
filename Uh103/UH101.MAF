@@ -1,0 +1,15 @@
+
+
+t	=Uh101
+a	=MPASM /q- $(@B)
+
+PATH	=\MPLAB
+
+all:	$t.ver $t.hex
+
+$t.ver		: *.asm *.inc
+	\rac_doc\version $(@B).VER
+
+$t.hex		: *.asm *.h *.inc
+	$a
+

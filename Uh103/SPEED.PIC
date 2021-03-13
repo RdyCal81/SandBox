@@ -1,0 +1,51 @@
+; - Beginning Asm
+		if ( SPEED_CONFIG )
+	
+; - Ending Asm
+
+
+
+; -----------------------------------------------------------------------
+; ----- Line #   22 ----- Function : SpeedConfig
+; -----------------------------------------------------------------------
+SpeedConfig:
+		bcf	LED_LED / 8, LED_LED & 7
+		call	SetRunSpeed
+		call	StrCurSpeed
+		call	ShowGraph
+;COMMENT
+		bsf	SPEED_IS_SET / 8, SPEED_IS_SET & 7
+				; ---- Beginning "while     " Ln    33 F   1
+_C_a:
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln    35 F   2
+;COMMENT
+		call	TestHiTemp
+		call	ReadKeyPad
+				; ---- Beginning "if        " Ln    39 F   3
+;----- if ( APP_KEY_HIT )
+		btfss	APP_KEY_HIT / 8, APP_KEY_HIT & 7
+		goto	_C_c
+				;ExeLoop w/ typ = YES
+				; ---- Beginning "ExeLoop   " Ln    41 F   4
+		bcf	APP_KEY_HIT / 8, APP_KEY_HIT & 7
+		call	SpeedKeyHit
+				; ---- Ending    "ExeLoop   " Ln    44 F   4
+_C_c:
+				; ---- Ending    "if        " Ln    44 F   3
+				; ---- Ending    "ExeLoop   " Ln    45 F   2
+		goto	_C_a
+_C_b:
+				; ---- Ending    "while     " Ln    45 F   1
+		return
+
+
+;--End of DoFunct ();
+
+
+
+; - Beginning Asm
+		endif
+	
+; - Ending Asm
+; --- End of Compilation ---
